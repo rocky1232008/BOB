@@ -77,13 +77,13 @@ def francaisSpeak(audio_string):
     print(audio_string)
     os.remove(audio_file)
 
-
 def pracFrench():
     rand = 0
     while(main.pracFrenchMode == True):
         rand = random.randint(0, 39)
         speak(questions[rand])
         time.sleep(5)
+
 
 
 def respond(voice_data):
@@ -142,7 +142,7 @@ def respond(voice_data):
             exit()
         if('location' in voice_data and 'set' in voice_data):
             locat = record('The current location is ' +
-                           main.location + ', what is the new location?')
+                        main.location + ', what is the new location?')
             if(locat != ''):
                 main.location = locat
                 shelf2 = shelve.open('var.dat')
@@ -174,6 +174,8 @@ def respond(voice_data):
             main.pracFrenchMode = True
             speak('I will ask you some questions in french, try and see if you can understand them! You will have 5 seconds for each question. When you want to stop practicing, say "Stop now"')
             pracFrench()
+        if('you' in voice_data and 'date' in voice_data and 'me' in voice_data):
+            speak('nah, you are almost as thick as yash\'s booty and too short. Also, im a literal computer program, get a life. ha ha ha ha smoked by a computer, you must have a depressing life.')
     if(main.pracFrenchMode == True and 'stop' in voice_data and 'now' in voice_data):
         main.pracFrenchMode == False
 
@@ -201,3 +203,4 @@ while True:
         main.called = True
     if(main.called == True):
         respond(voice_data)
+
